@@ -14,30 +14,36 @@
     <header class="bg-red-400 text-center text-5xl text-neutral-50 font-semibold p-5">
         <h1>Weather Dashboard</h1>
     </header>
+    <div class="grid grid-cols-12">
+        <div class="ml-10 col-span-3">
+            <!-- city search feature -->
+            <div class="border-2 border-red-500 contents" id="searchDiv">
+                <h2 class="text-2xl">Search for a City:</h2>
+                <input class="border-2 bg-red-100 border-red-300" id="searchInput" type="text">
+                <button class="border-2 bg-red-300 border-red-500 rounded p-1 mt-3" id="searchBtn">Search</button>
+            </div>
 
-    <div class="ml-10">
-        <!-- city search feature -->
-        <div class="border-2 border-red-500 contents" id="searchDiv">
-            <h2 class="text-2xl">Search for a City:</h2>
-            <input class="border-2 bg-red-100 border-red-300" id="searchInput" type="text">
-            <button class="border-2 bg-red-300 border-red-500 p-1" id="searchBtn">Search</button>
+            <!-- last 10 searches -->
+            <div class="justify-start mt-12" id="recentSearches"></div>
         </div>
 
-        <!-- last 10 searches -->
-        <div class="grid justify-start mt-12" id="recentSearches"></div>
+        <div class="col-span-9 ml-12">
+            <!-- current city -->
+            <div class="hidden" id="cityDiv">
+                <h2 id="cityName">Name of City</h2>
+                <p id="currentTemp"></p>
+                <p id="currentHumi"></p>
+                <p id="currentWind"></p>
+
+            </div>
+            <br>
+            <!-- 5-day weather forecast -->
+            <div class="hidden grid grid-cols-10" id="forecastCard"></div>
+        </div>
+
+
+
     </div>
-
-    <!-- current city -->
-    <div class="hidden" id="cityDiv">
-        <h2>Name of City</h2>
-        <p id="currentTemp"></p>
-        <p id="currentHumi"></p>
-        <p id="currentWind"></p>
-
-    </div>
-
-    <!-- 5-day weather forecast -->
-    <div class="hidden" id="forecastCard"></div>
 
 </body>
 <script src="./assets/script.js"></script>
