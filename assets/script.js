@@ -49,20 +49,27 @@ function citySearch(city) {
     .then(function (data) {
       console.log(data);
       cityName.innerHTML = `${data.city.name}<img src="http://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png">`;
-      currentTemp.innerHTML = `Temp: ${data.list[0].main.temp}`;
-      currentHumi.innerHTML = `Humidity ${data.list[0].main.humidity}`;
-      currentWind.innerHTML = `Wind Speed: ${data.list[0].wind.speed}`;
-      forecastCard.innerHTML = "";
+      currentTemp.innerHTML = `Temp: ${data.list[0].main.temp}°F`;
+      currentHumi.innerHTML = `Humidity: ${data.list[0].main.humidity}%`;
+      currentWind.innerHTML = `Wind Speed: ${data.list[0].wind.speed} MPH`;
+
       // 5 day forecast
+      forecastCard.innerHTML = "";
       data.list.forEach((day) => {
         let midnight = day.dt_txt.split(" ")[1];
         if (midnight === "00:00:00") {
           let dayCard = document.createElement("div");
           dayCard.classList.add("col-span-2");
-          dayCard.innerHTML += `<h3>${day.dt_txt}</h3>`;
-          // dayCard.innerHTML += `<img>${day.weather.icon}</img>`;
-          dayCard.innerHTML += `<p>Temp: ${day.main.temp}</p>`;
-          dayCard.innerHTML += `<p>Humidity: ${day.main.humidity}</p>`;
+          dayCard.classList.add("p-2");
+          dayCard.classList.add("border-2");
+          dayCard.classList.add("border-red-500");
+          dayCard.classList.add("leading-10");
+          dayCard.classList.add("bg-orange-200");
+          dayCard.innerHTML += `<h3>${day.dt_txt.split(" ")[0]}</h3>`;
+          dayCard.innerHTML += `<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png">`;
+          dayCard.innerHTML += `<p>Temp: ${day.main.temp}°F</p>`;
+          dayCard.innerHTML += `<p>Humidity: ${day.main.humidity}%</p>`;
+          dayCard.innerHTML += `<p>Wind: ${day.wind.speed} MPH</p>`;
 
           forecastCard.append(dayCard);
         }

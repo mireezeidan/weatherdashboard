@@ -9,7 +9,7 @@
     <title>Weather Dashboard</title>
 </head>
 
-<body>
+<body class="bg-zinc-400">
     <!-- Weather dashboard header -->
     <header class="bg-red-400 text-center text-5xl text-neutral-50 font-semibold p-5">
         <h1>Weather Dashboard</h1>
@@ -29,8 +29,8 @@
 
         <div class="col-span-9 ml-12">
             <!-- current city -->
-            <div class="hidden" id="cityDiv">
-                <h2 id="cityName">Name of City</h2>
+            <div class="hidden border-2 border-red-500 p-3 mt-2 mr-6 bg-orange-200" id="cityDiv">
+                <h2 id="cityName" class="text-base"></h2>
                 <p id="currentTemp"></p>
                 <p id="currentHumi"></p>
                 <p id="currentWind"></p>
@@ -38,7 +38,7 @@
             </div>
             <br>
             <!-- 5-day weather forecast -->
-            <div class="hidden grid grid-cols-10" id="forecastCard"></div>
+            <div class="hidden grid grid-cols-10 gap-4 mr-6" id="forecastCard"></div>
         </div>
 
 
