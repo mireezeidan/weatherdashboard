@@ -18,9 +18,10 @@ function init() {
     let cityBtn = document.createElement("button");
     cityBtn.innerHTML += `${city}`;
     let br = document.createElement("br");
-    recentSearchDiv.append(cityBtn);
-    recentSearchDiv.append(br);
+    recentSearchDiv.prepend(cityBtn);
+    recentSearchDiv.prepend(br);
     cityBtn.classList.add("cityBtn");
+    cityBtn.classList.add("w-full");
     cityBtn.classList.add("border-2");
     cityBtn.classList.add("bg-red-300");
     cityBtn.classList.add("border-red-500");
@@ -36,7 +37,7 @@ function citySearch(city) {
   console.log(city);
 
   cities.push(city);
-  localStorage.setItem("cities", JSON.stringify(cities));
+  localStorage.setItem("cities", JSON.stringify(cities.slice(-10)));
   cityDiv.classList.remove("hidden");
   forecastCard.classList.remove("hidden");
 
@@ -57,7 +58,7 @@ function citySearch(city) {
       forecastCard.innerHTML = "";
       data.list.forEach((day) => {
         let midnight = day.dt_txt.split(" ")[1];
-        if (midnight === "00:00:00") {
+        if (midnight === "09:00:00") {
           let dayCard = document.createElement("div");
           dayCard.classList.add("col-span-2");
           dayCard.classList.add("p-2");
@@ -65,7 +66,7 @@ function citySearch(city) {
           dayCard.classList.add("border-red-500");
           dayCard.classList.add("leading-10");
           dayCard.classList.add("bg-orange-200");
-          dayCard.innerHTML += `<h3>${day.dt_txt.split(" ")[0]}</h3>`;
+          dayCard.innerHTML += `<h3 class="text-lg">${day.dt_txt.split(" ")[0]}</h3>`;
           dayCard.innerHTML += `<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png">`;
           dayCard.innerHTML += `<p>Temp: ${day.main.temp}°F</p>`;
           dayCard.innerHTML += `<p>Humidity: ${day.main.humidity}%</p>`;
