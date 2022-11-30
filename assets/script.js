@@ -66,7 +66,7 @@ function citySearch(city) {
           dayCard.classList.add("border-red-500");
           dayCard.classList.add("leading-10");
           dayCard.classList.add("bg-orange-200");
-          dayCard.innerHTML += `<h3 class="text-lg">${day.dt_txt.split(" ")[0]}</h3>`;
+          dayCard.innerHTML += `<h3 class="text-lg font-bold">${day.dt_txt.split(" ")[0]}</h3>`;
           dayCard.innerHTML += `<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png">`;
           dayCard.innerHTML += `<p>Temp: ${day.main.temp}°F</p>`;
           dayCard.innerHTML += `<p>Humidity: ${day.main.humidity}%</p>`;
